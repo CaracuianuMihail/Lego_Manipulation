@@ -1,0 +1,111 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    height: 100vh;
+    font-family: Montserrat, sans-serif;
+  }
+  
+  .minifigure {
+    position: relative;
+    width: 300px;
+    height: 485px;
+    margin: auto;
+    perspective: 200;
+    transform-style: preserve-3d;
+    transition: transform 400ms;
+  }
+  
+  .minifigure.explode {
+    transform: scale(0.75) translateZ(0);
+  }
+  
+  /* Head */
+  
+  .head {
+    position: absolute;
+    z-index: 2;
+    top: 2.25em;
+    left: 50%;
+    width: 7.25em;
+    height: 6.25em;
+    transform: translateX(-50%);
+    color: hsla(50,90%,50%,1);
+    background-color: currentColor;
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.3),
+        rgba(255,255,255,0) 20%,
+        rgba(0,0,0,0) 80%,
+        rgba(0,0,0,0.15) 95%,
+        rgba(0,0,0,0.3)
+      ),
+      linear-gradient(
+        to right,
+        rgba(255,255,255,0) 50%,
+        rgba(255,255,255,0.2),
+        rgba(255,255,255,0)
+      );
+    border-radius: 1.5em;
+    transition: transform 400ms;
+  }
+  
+  .explode .head {
+    transform: translate(-50%, -8em);
+  }
+  
+  .head::before,
+  .head::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    height: 2em;
+    transform: translateX(-50%);
+    background-color: currentColor;
+  }
+  
+  .head::before {
+    top: -1.25em;
+    width: 3.5em;
+    height: 1.25em;
+    background-image:
+      linear-gradient(
+        rgba(255,255,255,0.5),
+        rgba(255,255,255,0) 30%
+      ),
+      linear-gradient(
+        to right,
+        rgba(255,255,255,0) 70%,
+        rgba(255,255,255,0.25) 80%,
+        rgba(255,255,255,0) 90%
+      );
+    border-radius: 0.25em 0.25em 0 0;
+  }
+  
+  .head::after {
+    bottom: -0.875em;
+    width: 4.5em;
+    height: 1em;
+    background-image:
+      linear-gradient(
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.05) 50%
+      ),
+      linear-gradient(
+        to right,
+        rgba(255,255,255,0) 70%,
+        rgba(255,255,255,0.25) 80%,
+        rgba(255,255,255,0) 90%
+      );
+    border-radius: 0 0 0.125em 0.125em;
+  }
